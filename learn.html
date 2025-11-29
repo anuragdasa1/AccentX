@@ -47,15 +47,12 @@ h1 {
 audio { width: 100%; outline: none; }
 
 .back-btn {
-    display: block;
-    margin: 40px auto;
-    padding: 15px 30px;
-    background: var(--secondary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: transform 0.2s;
+    position: fixed; /* fixes the button on screen */
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px; /* smaller size */
+    font-size: 1rem;   /* smaller text */
+    border-radius: 8px;
 }
 .back-btn:hover { transform: scale(1.05); background: var(--hover-color);}
 </style>
@@ -110,3 +107,4 @@ audio { width: 100%; outline: none; }
 <a class="back-btn" href="index.html">Back to Home</a>
 </body>
 </html>
+
