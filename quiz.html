@@ -53,8 +53,20 @@ audio { margin-top:20px; outline:none; width:80%; max-width:400px;}
         <option value="">Select</option>
         <option>A</option><option>B</option><option>C</option><option>D</option>
     </select>
+<div class="quiz-grid">
+  <div class="quiz-item">
+      <label>Question 1</label>
+      <select>...</select>
+  </div>
+  <div class="quiz-item">
+      <label>Question 2</label>
+      <input type="number" ...>
+  </div>
+  ...
+</div>
 
-    <button type="button" onclick="checkAnswers()">Submit</button>
+<button type="button" class="submit-btn">Submit</button>
+s
 </form>
 
 <div class="result" id="result"></div>
@@ -101,3 +113,4 @@ function checkAnswers() {
 </script>
 </body>
 </html>
+
