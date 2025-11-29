@@ -20,15 +20,16 @@ audio { margin-top:20px; outline:none; width:80%; max-width:400px;}
 </style>
 </head>
 <body>
-<h1>Test Your Accent Knowledge</h1>
-<audio controls>
-    <source src="audio1.mp3" type="audio/mpeg">
-</audio>
+<a class="back-btn" href="index.html">Back to Home</a>
+<div class="container">
+<h2>Accent Quiz</h2>
 
-<form id="quizForm">
-    <label>Which country/region do you think this person is from?</label>
-    <select name="country" required>
-        <option value="">Select</option>
+<form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+
+    <!-- Region Guess -->
+    <label>Which region do you think this speaker is from?</label><br>
+    <select name="entry.REGION_ID" required 
+            style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
         <option>Middle East</option>
         <option>Africa</option>
         <option>South Asia</option>
@@ -36,42 +37,45 @@ audio { margin-top:20px; outline:none; width:80%; max-width:400px;}
         <option>China</option>
     </select>
 
-    <label>IELTS Score (0-9, 0.5 step)</label>
-    <input type="number" name="ielts" min="0" max="9" step="0.5" required>
+    <!-- IELTS Guess -->
+    <label>What do you think their IELTS score is? (0–9 in steps of 0.5)</label>
+    <input type="number" name="entry.IELTS_ID" step="0.5" min="0" max="9" required
+           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
 
-    <label>First Language</label>
-    <input type="text" name="language" placeholder="Enter language" required>
+    <!-- First Language -->
+    <label>Guess their first language</label>
+    <textarea name="entry.FIRSTLANG_ID" required
+              placeholder="Enter your guess"
+              style="width:100%; height:60px; padding:10px; border-radius:8px; margin-bottom:15px;"></textarea>
 
-    <label>Literacy Rate (country %)</label>
-    <input type="number" name="literacy" min="0" max="100" step="10" required>
+    <!-- Literacy Rate -->
+    <label>What do you think their country's literacy rate is? (in 10% ranges)</label>
+    <input type="text" name="entry.LITERACY_ID" required placeholder="e.g., 60–70%"
+           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
 
-    <label>Major/Year</label>
-    <input type="text" name="major" placeholder="Enter major/year" required>
+    <!-- Major / Year -->
+    <label>What major/year do you think they are?</label>
+    <input type="text" name="entry.MAJOR_ID" required placeholder="e.g., IS Junior"
+           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
 
-    <label>GPA Range</label>
-    <select name="gpa" required>
-        <option value="">Select</option>
-        <option>A</option><option>B</option><option>C</option><option>D</option>
+    <!-- GPA Range -->
+    <label>What GPA range do you think they fall into?</label><br>
+    <select name="entry.GPA_ID" required
+            style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
     </select>
-<div class="quiz-grid">
-  <div class="quiz-item">
-      <label>Question 1</label>
-      <select>...</select>
-  </div>
-  <div class="quiz-item">
-      <label>Question 2</label>
-      <input type="number" ...>
-  </div>
-  ...
-</div>
 
-<button type="button" class="submit-btn">Submit</button>
-s
+    <button type="submit"
+        style="background:#e94560; color:white; padding:14px 25px; border:none; border-radius:8px; cursor:pointer;">
+        Submit Quiz
+    </button>
+
 </form>
-
-<div class="result" id="result"></div>
-<a class="back-btn" href="index.html">Back to Home</a>
-
+</div>
+    
 <script>
 // Placeholder correct answers
 const correctAnswers = {
@@ -143,5 +147,6 @@ function checkAnswers() {
 </script>
 </body>
 </html>
+
 
 
