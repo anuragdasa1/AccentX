@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story About Miscommunication - AccentX</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #e94560;
+    --accent-color: #f7f7f7;
+    --hover-color: #16213e;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+.audio-video-container {
+    margin: 20px auto;
+    max-width: 600px;
+}
+audio, video { width: 100%; outline: none; border-radius: 10px; margin-bottom: 20px;}
+canvas { margin: 30px auto; max-width: 600px;}
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 20px 10px;
+    font-size: 1.2rem;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.btn:hover { background: var(--hover-color); transform: scale(1.05);}
+</style>
+</head>
+<body>
+
+<h1>Story About Miscommunication</h1>
+
+<div class="audio-video-container">
+    <h3>Audio Story (Recorded)</h3>
+    <audio controls>
+        <source src="audio1.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="audio-video-container">
+    <h3>Video Story (Internet Source)</h3>
+    <video controls>
+        <source src="story.mp4" type="video/mp4">
+    </video>
+</div>
+
+<h3>Accent Misunderstanding Survey (Dummy Data)</h3>
+<canvas id="surveyChart"></canvas>
+
+<a class="btn" href="index.html">Back to Home</a>
+<a class="btn" href="learn.html">Learn Accents</a>
+
+<script>
+// Dummy survey data for Chart.js
+const ctx = document.getElementById('surveyChart').getContext('2d');
+const surveyChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Misunderstood Words', 'Repeats Needed', 'Misjudged Accent', 'Confused Listener'],
+        datasets: [{
+            label: 'Number of Instances',
+            data: [12, 9, 7, 5],
+            backgroundColor: '#e94560',
+            borderColor: '#1a1a2e',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Accent Misunderstanding Survey',
+                color: '#1a1a2e',
+                font: { size: 18 }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { stepSize: 1 }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

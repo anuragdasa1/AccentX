@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accent Quiz - AccentX</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root { --primary-color:#1a1a2e; --secondary-color:#e94560; --hover-color:#16213e; }
+body { font-family: 'Roboto', sans-serif; background:#f0f4f8; margin:0; padding:20px; text-align:center; }
+h1 { color: var(--primary-color); margin-bottom: 30px;}
+label { display:block; margin:15px 0 5px; font-weight:bold;}
+input, select, textarea { padding:10px; width:80%; max-width:400px; border-radius:5px; border:1px solid #ccc;}
+button { margin-top:20px; padding:15px 30px; font-size:1.2rem; border:none; border-radius:10px; background:var(--secondary-color); color:white; cursor:pointer; transition:0.2s;}
+button:hover { background:var(--hover-color); transform: scale(1.05);}
+.result { margin-top:30px; font-weight:bold; }
+audio { margin-top:20px; outline:none; width:80%; max-width:400px;}
+.back-btn { display:block; margin:40px auto; padding:15px 30px; background: var(--secondary-color); color:white; text-decoration:none; border-radius:10px;}
+.back-btn:hover { background: var(--hover-color);}
+</style>
+</head>
+<body>
+<h1>Test Your Accent Knowledge</h1>
+<audio controls>
+    <source src="audio1.mp3" type="audio/mpeg">
+</audio>
+
+<form id="quizForm">
+    <label>Which country/region do you think this person is from?</label>
+    <select name="country" required>
+        <option value="">Select</option>
+        <option>Middle East</option>
+        <option>Africa</option>
+        <option>South Asia</option>
+        <option>Central Asia</option>
+        <option>China</option>
+    </select>
+
+    <label>IELTS Score (0-9, 0.5 step)</label>
+    <input type="number" name="ielts" min="0" max="9" step="0.5" required>
+
+    <label>First Language</label>
+    <input type="text" name="language" placeholder="Enter language" required>
+
+    <label>Literacy Rate (country %)</label>
+    <input type="number" name="literacy" min="0" max="100" step="10" required>
+
+    <label>Major/Year</label>
+    <input type="text" name="major" placeholder="Enter major/year" required>
+
+    <label>GPA Range</label>
+    <select name="gpa" required>
+        <option value="">Select</option>
+        <option>A</option><option>B</option><option>C</option><option>D</option>
+    </select>
+
+    <button type="button" onclick="checkAnswers()">Submit</button>
+</form>
+
+<div class="result" id="result"></div>
+<a class="back-btn" href="index.html">Back to Home</a>
+
+<script>
+// Placeholder correct answers
+const correctAnswers = {
+    country: "South Asia",
+    ielts: 7.5,
+    language: "Nepali",
+    literacy: 85,
+    major: "CS/Junior",
+    gpa: "A"
+};
+
+function checkAnswers() {
+    const form = document.getElementById("quizForm");
+    const resultDiv = document.getElementById("result");
+    const userAnswers = {
+        country: form.country.value,
+        ielts: parseFloat(form.ielts.value),
+        language: form.language.value,
+        literacy: parseInt(form.literacy.value),
+        major: form.major.value,
+        gpa: form.gpa.value
+    };
+    let score = 0;
+    if(userAnswers.country === correctAnswers.country) score++;
+    if(userAnswers.ielts === correctAnswers.ielts) score++;
+    if(userAnswers.language.toLowerCase() === correctAnswers.language.toLowerCase()) score++;
+    if(userAnswers.literacy === correctAnswers.literacy) score++;
+    if(userAnswers.major.toLowerCase() === correctAnswers.major.toLowerCase()) score++;
+    if(userAnswers.gpa === correctAnswers.gpa) score++;
+
+    resultDiv.innerHTML = `You got ${score}/6 correct! <br> Correct Answers: <br>
+    Country: ${correctAnswers.country} <br>
+    IELTS: ${correctAnswers.ielts} <br>
+    First Language: ${correctAnswers.language} <br>
+    Literacy Rate: ${correctAnswers.literacy}% <br>
+    Major/Year: ${correctAnswers.major} <br>
+    GPA: ${correctAnswers.gpa}`;
+}
+</script>
+</body>
+</html>

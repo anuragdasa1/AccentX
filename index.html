@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AccentX - CMUQ Accent Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #e94560;
+    --accent-color: #f7f7f7;
+    --hover-color: #16213e;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+h1 {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+.btn {
+    display: inline-block;
+    padding: 20px 50px;
+    margin: 20px;
+    font-size: 1.5rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    text-decoration: none;
+}
+.btn:hover {
+    transform: scale(1.05);
+    background: var(--hover-color);
+}
+audio {
+    margin-top: 40px;
+    outline: none;
+}
+</style>
+</head>
+<body>
+<h1>AccentX</h1>
+<a class="btn" href="learn.html">Learn Accents</a>
+<a class="btn" href="quiz.html">Take the Quiz</a>
+<a class="btn" href="story.html">Story About Miscommunication</a>
+<a class="btn" href="reflection.html">Community Reflection</a>
+
+<!-- Teaser audio -->
+<audio controls>
+    <source src="audio1.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
