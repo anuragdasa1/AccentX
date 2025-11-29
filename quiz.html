@@ -110,7 +110,38 @@ function checkAnswers() {
     Major/Year: ${correctAnswers.major} <br>
     GPA: ${correctAnswers.gpa}`;
 }
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* max 3 columns */
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.quiz-item {
+    background: var(--accent-color);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 40px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background: var(--hover-color);
+    transform: scale(1.05);
+}
+
 </script>
 </body>
 </html>
+
 
