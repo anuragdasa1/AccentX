@@ -30,6 +30,19 @@ h1 {
 }
 audio, video { width: 100%; outline: none; border-radius: 10px; margin-bottom: 20px;}
 canvas { margin: 30px auto; max-width: 600px;}
+
+body, h1, h2, label, .item b {
+    color: var(--text-color);
+}
+h1, h2 {
+    color: var(--primary-color);
+}
+.btn, .back-btn {
+    background: var(--secondary-color);
+}
+.btn:hover, .back-btn:hover {
+    background: var(--hover-color);
+}
 .btn {
     display: inline-block;
     padding: 15px 30px;
@@ -106,3 +119,4 @@ const surveyChart = new Chart(ctx, {
 
 </body>
 </html>
+
