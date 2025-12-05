@@ -5,148 +5,140 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accent Quiz - AccentX</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-:root { --primary-color:#1a1a2e; --secondary-color:#e94560; --hover-color:#16213e; }
-body { font-family: 'Roboto', sans-serif; background:#f0f4f8; margin:0; padding:20px; text-align:center; }
-h1 { color: var(--primary-color); margin-bottom: 30px;}
-label { display:block; margin:15px 0 5px; font-weight:bold;}
-input, select, textarea { padding:10px; width:80%; max-width:400px; border-radius:5px; border:1px solid #ccc;}
-button { margin-top:20px; padding:15px 30px; font-size:1.2rem; border:none; border-radius:10px; background:var(--secondary-color); color:white; cursor:pointer; transition:0.2s;}
-button:hover { background:var(--hover-color); transform: scale(1.05);}
-.result { margin-top:30px; font-weight:bold; }
-audio { margin-top:20px; outline:none; width:80%; max-width:400px;}
-.back-btn { display:block; margin:40px auto; padding:15px 30px; background: var(--secondary-color); color:white; text-decoration:none; border-radius:10px;}
-.back-btn:hover { background: var(--hover-color);}
-</style>
-</head>
-<body>
-<a class="back-btn" href="index.html">Back to Home</a>
-<div class="container">
-<h2>Accent Quiz</h2>
-
-<form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
-
-    <!-- Region Guess -->
-    <label>Which region do you think this speaker is from?</label><br>
-    <select name="entry.REGION_ID" required 
-            style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
-        <option>Middle East</option>
-        <option>Africa</option>
-        <option>South Asia</option>
-        <option>Central Asia</option>
-        <option>China</option>
-    </select>
-
-    <!-- IELTS Guess -->
-    <label>What do you think their IELTS score is? (0–9 in steps of 0.5)</label>
-    <input type="number" name="entry.IELTS_ID" step="0.5" min="0" max="9" required
-           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
-
-    <!-- First Language -->
-    <label>Guess their first language</label>
-    <textarea name="entry.FIRSTLANG_ID" required
-              placeholder="Enter your guess"
-              style="width:100%; height:60px; padding:10px; border-radius:8px; margin-bottom:15px;"></textarea>
-
-    <!-- Literacy Rate -->
-    <label>What do you think their country's literacy rate is? (in 10% ranges)</label>
-    <input type="text" name="entry.LITERACY_ID" required placeholder="e.g., 60–70%"
-           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
-
-    <!-- Major / Year -->
-    <label>What major/year do you think they are?</label>
-    <input type="text" name="entry.MAJOR_ID" required placeholder="e.g., IS Junior"
-           style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
-
-    <!-- GPA Range -->
-    <label>What GPA range do you think they fall into?</label><br>
-    <select name="entry.GPA_ID" required
-            style="width:100%; padding:10px; border-radius:8px; margin-bottom:15px;">
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
-        <option>D</option>
-    </select>
-
-    <button type="submit"
-        style="background:#e94560; color:white; padding:14px 25px; border:none; border-radius:8px; cursor:pointer;">
-        Submit Quiz
-    </button>
-
-</form>
-</div>
-    
-<script>
-// Placeholder correct answers
-const correctAnswers = {
-    country: "South Asia",
-    ielts: 7.5,
-    language: "Nepali",
-    literacy: 85,
-    major: "CS/Junior",
-    gpa: "A"
-};
-
-function checkAnswers() {
-    const form = document.getElementById("quizForm");
-    const resultDiv = document.getElementById("result");
-    const userAnswers = {
-        country: form.country.value,
-        ielts: parseFloat(form.ielts.value),
-        language: form.language.value,
-        literacy: parseInt(form.literacy.value),
-        major: form.major.value,
-        gpa: form.gpa.value
-    };
-    let score = 0;
-    if(userAnswers.country === correctAnswers.country) score++;
-    if(userAnswers.ielts === correctAnswers.ielts) score++;
-    if(userAnswers.language.toLowerCase() === correctAnswers.language.toLowerCase()) score++;
-    if(userAnswers.literacy === correctAnswers.literacy) score++;
-    if(userAnswers.major.toLowerCase() === correctAnswers.major.toLowerCase()) score++;
-    if(userAnswers.gpa === correctAnswers.gpa) score++;
-
-    resultDiv.innerHTML = `You got ${score}/6 correct! <br> Correct Answers: <br>
-    Country: ${correctAnswers.country} <br>
-    IELTS: ${correctAnswers.ielts} <br>
-    First Language: ${correctAnswers.language} <br>
-    Literacy Rate: ${correctAnswers.literacy}% <br>
-    Major/Year: ${correctAnswers.major} <br>
-    GPA: ${correctAnswers.gpa}`;
+:root {
+    --primary-color:#1a1a2e;
+    --secondary-color:#e94560;
+    --hover-color:#16213e;
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background:#f0f4f8;
+    margin:0;
+    padding:20px;
+    text-align:center;
+}
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+p {
+    color:#333;
+    max-width:700px;
+    margin:0 auto 30px;
+}
+
+.back-btn {
+    display:block;
+    margin:20px auto 40px;
+    padding:12px 25px;
+    background: var(--secondary-color);
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+.back-btn:hover { background: var(--hover-color); }
+
 .quiz-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* max 3 columns */
-    gap: 20px;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 950px;
     margin: 0 auto;
 }
 
-.quiz-item {
-    background: var(--accent-color);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+.audio-card {
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.submit-btn {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 40px;
+.audio-card h3 {
+    color: var(--primary-color);
+    margin-bottom:10px;
+}
+
+audio {
+    width:100%;
+    margin:10px 0 15px;
+}
+
+.quiz-btn {
+    padding:10px 22px;
     background: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    text-decoration:none;
 }
-.submit-btn:hover {
-    background: var(--hover-color);
-    transform: scale(1.05);
-}
+.quiz-btn:hover { background: var(--hover-color); }
+</style>
+</head>
 
-</script>
+<body>
+
+<a class="back-btn" href="index.html">← Back to Home</a>
+
+<h1>Quiz — Listen & Guess!</h1>
+<p>
+Choose any audio from below. Listen carefully and then click the button to take the quiz.
+Your answers are only reflections of your perception — there are no right or wrong responses.
+Through these diverse CMU-Q voices, our CMUnity grows stronger. 🌍❤️
+</p>
+
+<div class="quiz-grid">
+
+    <!-- AUDIO 1 -->
+    <div class="audio-card">
+        <h3>Audio 1</h3>
+        <audio controls>
+            <source src="yoyo.mp3" type="audio/mp3">
+        </audio>
+        <a class="quiz-btn" target="_blank" href="https://docs.google.com/forms/d/1DjBIqKNIo-G6zcP8rBEv9yXPsbPT73HXdCaxBSqK6xc/edit">
+            Take Quiz for Audio 1
+        </a>
+    </div>
+
+    <!-- AUDIO 2 -->
+    <div class="audio-card">
+        <h3>Audio 2</h3>
+        <audio controls>
+            <source src="ababiya.mp3" type="audio/mp3">
+        </audio>
+        <a class="quiz-btn" target="_blank" href="https://docs.google.com/forms/d/1DjBIqKNIo-G6zcP8rBEv9yXPsbPT73HXdCaxBSqK6xc/edit">
+            Take Quiz for Audio 2
+        </a>
+    </div>
+
+    <!-- AUDIO 3 -->
+    <div class="audio-card">
+        <h3>Audio 3</h3>
+        <audio controls>
+            <source src="ahmad.mp3" type="audio/mp3">
+        </audio>
+        <a class="quiz-btn" target="_blank" href="https://docs.google.com/forms/d/1DjBIqKNIo-G6zcP8rBEv9yXPsbPT73HXdCaxBSqK6xc/edit">
+            Take Quiz for Audio 3
+        </a>
+    </div>
+
+    <!-- AUDIO 4 -->
+    <div class="audio-card">
+        <h3>Audio 4</h3>
+        <audio controls>
+            <source src="jahangir.mp3" type="audio/mp3">
+        </audio>
+        <a class="quiz-btn" target="_blank" href="https://docs.google.com/forms/d/1DjBIqKNIo-G6zcP8rBEv9yXPsbPT73HXdCaxBSqK6xc/edit">
+            Take Quiz for Audio 4
+        </a>
+    </div>
+
+</div>
+
 </body>
 </html>
-
-
-
