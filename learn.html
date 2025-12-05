@@ -56,6 +56,36 @@ audio { width: 100%; outline: none; }
     border-radius: 8px;
 }
 .back-btn:hover { transform: scale(1.05); background: var(--hover-color);}
+
+    #global-script {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 800px;
+    background: #f7f7f7;
+    border-radius: 8px;
+    transition: filter 0.3s, opacity 0.3s;
+    filter: blur(3px);
+    opacity: 0;  /* hidden initially */
+}
+
+#global-script.clear {
+    filter: blur(0);
+}
+
+#global-script.visible {
+    opacity: 1;
+}
+
+#toggle-script-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #1f7a8c;
+    color: white;
+    cursor: pointer;
+}
+    
 </style>
 </head>
 <body>
@@ -65,7 +95,7 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Male Indian Speaker</b>
         <small>Calm tone, medium pace</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="aditya.mp4" type="audio/mpeg">
         </audio>
     </div>
@@ -73,7 +103,7 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Female Indian Speaker</b>
         <small>Soft, slightly fast</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="zaara.mp4" type="audio/mpeg">
         </audio>
     </div>
@@ -81,7 +111,7 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Male Central Asian Speaker</b>
         <small>Energetic tone</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="jahangir.mp4" type="audio/mpeg">
         </audio>
     </div>
@@ -89,23 +119,23 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Female Chinese Speaker</b>
         <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="yoyo.mp4" type="audio/mpeg">
         </audio>
     </div>
 
     <div class="item">
         <b>Male African Speaker</b>
-        <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <small>slow pace, clear pronunciation</small>
+        <audio class="learn-audio" controls>
             <source src="ose.mp4" type="audio/mpeg">
         </audio>
     </div>
 
     <div class="item">
         <b>Male Russian Speaker</b>
-        <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <small>Medium pace, heavy vocal</small>
+        <audio class="learn-audio" controls>
             <source src="kyrylo.mp4" type="audio/mpeg">
         </audio>
     </div>
@@ -113,15 +143,15 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Male Central Asian Speaker</b>
         <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="yusuf.mp4" type="audio/mpeg">
         </audio>
     </div>
 
     <div class="item">
         <b>Male Arabic Speaker</b>
-        <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <small>normal pace, soft slight intonation</small>
+        <audio class="learn-audio" controls>
             <source src="ahmad.mp4" type="audio/mpeg">
         </audio>
     </div>
@@ -129,17 +159,62 @@ audio { width: 100%; outline: none; }
     <div class="item">
         <b>Male Central Asian Speaker</b>
         <small>Medium pace, clear pronunciation</small>
-        <audio controls>
+        <audio class="learn-audio" controls>
             <source src="alemzhan.mp4" type="audio/mpeg">
         </audio>
     </div>
-
+    <!-- Global transcript area -->
+<div id="global-script" class="script">
+    Here’s the transcript preview. It becomes clear while audio plays.  
+    <button id="toggle-script-btn">Show Full Script</button>
+</div>
     <!-- Add more speakers as needed -->
 </div>
 
 <a class="back-btn" href="index.html">Back to Home</a>
+
+    <script>
+const audios = document.querySelectorAll('.learn-audio');
+const scriptDiv = document.getElementById('global-script');
+const toggleBtn = document.getElementById('toggle-script-btn');
+
+let currentAudio = null;
+
+// Toggle full script on button click
+toggleBtn.addEventListener('click', () => {
+    scriptDiv.classList.toggle('clear');
+});
+
+audios.forEach(audio => {
+    audio.addEventListener('play', () => {
+        // Pause other audios
+        audios.forEach(a => {
+            if(a !== audio) a.pause();
+        });
+        currentAudio = audio;
+        scriptDiv.classList.add('visible');   // show script
+        scriptDiv.classList.remove('clear');  // remove blur while playing
+    });
+
+    audio.addEventListener('pause', () => {
+        if(currentAudio === audio) {
+            scriptDiv.classList.add('clear'); // blur again
+        }
+    });
+
+    audio.addEventListener('ended', () => {
+        if(currentAudio === audio) {
+            scriptDiv.classList.add('clear'); 
+            scriptDiv.classList.remove('visible'); // hide when done
+            currentAudio = null;
+        }
+    });
+});
+</script>
+
 </body>
 </html>
+
 
 
 
