@@ -3,65 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AccentX - CMUQ Accent Explorer</title>
+<title>AccentX - CMUnity Communication</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --primary-color: #0b1e3f;    /* deep navy for headings/text */
-    --secondary-color: #1e90ff;  /* button blue */
-    --hover-color: #104e8b;      /* dark blue hover */
-    --accent-color: #e6f0ff;  
+    --primary-color: #0d1b2a;
+    --secondary-color: #1f7a8c;
+    --hover-color: #145374;
+    --accent-color: #f7f7f7;
 }
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+    background: #f0f4f8;
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    padding: 20px;
     text-align: center;
 }
 h1 {
     color: var(--primary-color);
-    font-size: 3rem;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    font-size: 2rem;
 }
-.btn {
-    display: inline-block;
-    padding: 20px 50px;
-    margin: 20px;
-    font-size: 1.5rem;
+.subtext {
+    color: #444;
+    margin-bottom: 40px;
+    font-size: 1rem;
+}
+
+/* Grid Blocks */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 850px;
+    margin: auto;
+}
+.block {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.18);
+}
+.block b {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+.block small {
+    display: block;
+    margin-top: 8px;
+    color: #333;
+}
+
+/* Feature Buttons */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 450px;
+    margin: 40px auto;
+}
+.feature-btn {
+    padding: 18px;
     background: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
-    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.2s;
 }
-.btn:hover {
-    transform: scale(1.05);
+.feature-btn:hover {
     background: var(--hover-color);
+    transform: scale(1.05);
 }
-audio {
-    margin-top: 40px;
-    outline: none;
+
+footer {
+    margin-top: 50px;
+    color: #555;
+    font-size: 0.9rem;
 }
 </style>
+
 </head>
 <body>
-<h1>AccentX</h1>
-<a class="btn" href="learn.html">Learn Accents</a>
-<a class="btn" href="https://forms.gle/WWYYYwUV55uVB9xW9">Take the Quiz</a>
-<a class="btn" href="story.html">Story About Miscommunication</a>
-<a class="btn" href="reflection.html">Community Reflection</a>
+
+<h1>Welcome to AccentX</h1>
+<p class="subtext">Understand accents at CMU-Q & communicate confidently in our diverse CMUnity.</p>
+
+<div class="grid">
+    <div class="block">
+        <b>Diverse Voices</b>
+        <small>Hear how English sounds across CMU-Q</small>
+    </div>
+
+    <div class="block">
+        <b>Real Students</b>
+        <small>Audio from CMU-Q students, faculty & staff</small>
+    </div>
+
+    <div class="block">
+        <b>No Misunderstandings</b>
+        <small>Learn accent patterns to ease communication</small>
+    </div>
+
+    <div class="block">
+        <b>Feel Included</b>
+        <small>Make conversations smoother on campus</small>
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="feature-btn" onclick="location.href='learn.html'">Hear Accents</button>
+    <button class="feature-btn" onclick="location.href='compare.html'">Compare Sounds</button>
+    <button class="feature-btn" onclick="location.href='shadow.html'">Try Speaking</button>
+    <button class="feature-btn" onclick="location.href='quiz.html'">Test Yourself</button>
+</div>
+
+<footer>Made for CMUnity at CMU-Q</footer>
 
 </body>
 </html>
-
-
-
-
