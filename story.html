@@ -3,121 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Story About Miscommunication - AccentX</title>
+<title>Story of Misunderstanding - AccentX</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 :root {
-    --primary-color: #1a1a2e;
-    --secondary-color: #e94560;
-    --accent-color: #f7f7f7;
-    --hover-color: #16213e;
+    --primary-color:#1a1a2e;
+    --secondary-color:#e94560;
+    --hover-color:#16213e;
 }
 body {
     font-family: 'Roboto', sans-serif;
-    background: #f0f4f8;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-h1 {
-    color: var(--primary-color);
-    margin-bottom: 30px;
-}
-.audio-video-container {
-    margin: 20px auto;
-    max-width: 600px;
-}
-audio, video { width: 100%; outline: none; border-radius: 10px; margin-bottom: 20px;}
-canvas { margin: 30px auto; max-width: 600px;}
-
-body, h1, h2, label, .item b {
-    color: var(--text-color);
+    background:#f0f4f8;
+    margin:0;
+    padding:20px;
+    text-align:center;
 }
 h1, h2 {
     color: var(--primary-color);
 }
-.btn, .back-btn {
+p {
+    color:#333;
+    max-width:800px;
+    margin:15px auto;
+    line-height:1.6;
+}
+section {
+    background:white;
+    padding:20px;
+    margin:30px auto;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    max-width:900px;
+}
+
+audio {
+    margin:15px 0;
+    width:100%;
+}
+.story-btn {
+    display:block;
+    margin:25px auto;
+    padding:12px 25px;
     background: var(--secondary-color);
+    color:white;
+    border:none;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
 }
-.btn:hover, .back-btn:hover {
-    background: var(--hover-color);
-}
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 20px 10px;
-    font-size: 1.2rem;
-    background: var(--secondary-color);
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: 0.2s;
-}
-.btn:hover { background: var(--hover-color); transform: scale(1.05);}
+.story-btn:hover { background: var(--hover-color); }
 </style>
+
 </head>
 <body>
 
-<h1>Story About Miscommunication</h1>
+<a class="story-btn" href="index.html">← Back to Home</a>
 
-<div class="audio-video-container">
-    <h3>Audio Story (Recorded)</h3>
+<h1>The Story of Misunderstandings</h1>
+
+<section>
+    <p>Let’s begin by understanding how misunderstandings really happen…</p>
+
+    <!-- AUDIO 1 -->
     <audio controls>
-        <source src="audio1.mp3" type="audio/mpeg">
+        <source src="anurag1.mp4" type="audio/mp3">
     </audio>
-</div>
+</section>
 
-<div class="audio-video-container">
-    <h3>Video Story (Internet Source)</h3>
-    <video controls>
-        <source src="https://www.youtube.com/shorts/5lNBML2BJdU" type="video/mp4">
-    </video>
-</div>
+<section>
+    <h2>Why does this happen?</h2>
+    <p>There are three main reasons:</p>
+    <p><strong>1) Pronunciation Differences</strong><br>Words may sound different depending on accent.</p>
+    <p><strong>2) Rhythm & Intonation</strong><br>The way we stress words can change meaning.</p>
+    <p><strong>3) Expectations</strong><br>We assume meaning instead of clarifying.</p>
+</section>
 
-<h3>Accent Misunderstanding Survey (Dummy Data)</h3>
-<canvas id="surveyChart"></canvas>
+<section>
+    <h2>How do we solve it?</h2>
+    <p>Here are the ways we can make our CMUnity stronger:</p>
 
-<a class="btn" href="index.html">Back to Home</a>
-<a class="btn" href="learn.html">Learn Accents</a>
+    <!-- AUDIO 2 -->
+    <audio controls>
+        <source src="anurag2.mp4" type="audio/mp3">
+    </audio>
+</section>
 
-<script>
-// Dummy survey data for Chart.js
-const ctx = document.getElementById('surveyChart').getContext('2d');
-const surveyChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Misunderstood Words', 'Repeats Needed', 'Misjudged Accent', 'Confused Listener'],
-        datasets: [{
-            label: 'Number of Instances',
-            data: [12, 9, 7, 5],
-            backgroundColor: '#e94560',
-            borderColor: '#1a1a2e',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: 'Accent Misunderstanding Survey',
-                color: '#1a1a2e',
-                font: { size: 18 }
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: { stepSize: 1 }
-            }
-        }
-    }
-});
-</script>
+<section>
+    <h2>Let’s wrap it up!</h2>
+    <p>Here’s a short video that summarizes everything beautifully:</p>
+    <a class="story-btn" target="_blank"
+       href="https://youtu.be/gCfzeONu3Mo?si=TN5dSO0DPlf46Oyj">
+       ▶ Watch Summary Video From TED-ed
+    </a>
+</section>
 
 </body>
 </html>
-
-
